@@ -1,8 +1,11 @@
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
+const cors = require("cors")
 
 app.use(express.json())
+app.use(cors())
+app.use(express.static('dist'))
 
 morgan.token('bodydata', function (req, res) { return JSON.stringify(req.body) })
 
@@ -18,6 +21,7 @@ app.use(morgan(function (tokens, req, res) {
     ].join(' ')
   }))
 */
+
 // METHOD 2 of Task 3.8
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :bodydata'))
 
@@ -109,7 +113,7 @@ const generateId = () => {
     return newId
   }
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
   })
