@@ -1,1 +1,11 @@
-DELETE http://localhost:3001/api/persons/65292f6786e913a84946c5b4
+### Bad format ID
+
+DELETE http://localhost:3001/api/persons/not_id
+
+### Existing ID
+
+DELETE http://localhost:3001/api/persons/65295043bee3784e963187f6
+
+### non-existent id
+
+DELETE http://localhost:3001/api/persons/666666666666666666666666
