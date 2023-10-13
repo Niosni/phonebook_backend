@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
     "name": "VS Code Testman",
-    "number": "123123123"
+    "phonenumber": "123123123"
 }
