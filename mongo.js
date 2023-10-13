@@ -36,7 +36,6 @@ if (process.argv.length<4) {
     name: nameArg,
     phonenumber: numberArg,
   })
-  
   // Add a person
   person.save().then(result => {
     console.log(`added ${person.name} number ${person.phonenumber} to phonebook`)
