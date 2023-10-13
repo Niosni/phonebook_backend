@@ -13,12 +13,24 @@ mongoose.connect(url)
         console.log('error connecting to MongoDB:', error.message)
     })
 
+
+function phonenumberValidator (val) {
+    return /\d{2,3}-\d{5,12}/.test(val)
+}
+const errorMessage =
+    'Number must be a valid finnish phone number; "x-y" where x is 2-3 digits and y is 5-12 digits.'
+const custom = [phonenumberValidator, errorMessage]
 const personSchema = new mongoose.Schema({
     name: {
         type: String,
         minlength: 3,
     },
-    phonenumber: String,
+    phonenumber: {
+        type: String,
+        minlength: 8,
+        maxlength: 16,
+        validate: custom
+    },
 })
 
 personSchema.set('toJSON', {
